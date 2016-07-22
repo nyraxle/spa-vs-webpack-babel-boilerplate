@@ -1,0 +1,45 @@
+<div class="tab-content">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="ficha">Ficha</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ficha" placeholder="Numero da Ficha" ng-model="PesquisaResultados.filtro.ficha">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" ng-click="PesquisaResultados.buscarFichas(PesquisaResultados.filtro)">Pesquisar</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table simple table-striped table-checkable table-highlight-head table-no-inner-border table-hover table-condensed">
+                <thead>
+                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>Ficha</th>
+                    <th>Nascimento</th>
+                </thead>
+                <tbody ng-if="PesquisaResultados.fichas.length !== 0">
+                    <tr ng-repeat="item in PesquisaResultados.fichas">
+                        <td>
+                            {{item.cliente.pessoaFisica.nomeCompleto}}
+                        </td>
+                        <td>
+                            {{item.dataAbertura | date: 'dd/MM/yyyy' : 'UTC' }}
+                        </td>
+                        <td>
+                            {{item.numero}}
+                        </td>
+                        <td>
+                            {{item.cliente.pessoaFisica.dataNascimento | date: 'dd/MM/yyyy' : 'UTC' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
